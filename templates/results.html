@@ -315,8 +315,8 @@
                                                         <a href="https://twitter.com/"><img style="padding: 0px,0px,0px,0px;width:70px;height: 70px;" src="{{url_for('static', filename='twitter-logo.png')}}" alt=""></a>
                                                     </div>
                                                 </td>
-                                                <td>{% for i in range(0,12) %}
-                                          {{tw_list[i]}}<br>
+                                                <td>{% for i in tw_list %}
+                                          {{i}}<br>
                                           {% endfor %}</td>
                                                 <td><span></span></td>
                                                 <td><span></span></td>

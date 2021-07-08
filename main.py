@@ -32,6 +32,8 @@ nltk.download('punkt')
 import keras
 import tensorflow as tf
 from sklearn.preprocessing import MinMaxScaler
+import twint
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # Ignore Warnings
 import warnings
@@ -410,23 +412,45 @@ def insertintotable():
         stock_full_form = stock_ticker_map[stock_ticker_map['Ticker']==symbol]
         symbol = stock_full_form['Name'].to_list()[0][0:12]
 
+        '''
+
         auth = tweepy.OAuthHandler(ct.consumer_key, ct.consumer_secret)
         auth.set_access_token(ct.access_token, ct.access_token_secret)
         user = tweepy.API(auth)
         
         tweets = tweepy.Cursor(user.search, q=symbol, tweet_mode='extended', lang='en',exclude_replies=True).items(ct.num_of_tweets)
         
+        '''
+
+        now = datetime.now()
+        date_time = now.strftime("%Y-%m-%d")
+
+        c = twint.Config()
+        c.Search = "TATAMOTORS nifty"
+        c.Limit= 10
+        c.Lang = "en"
+        c.Since= date_time
+        c.Pandas=True
+        twint.run.Search(c)
+
+        def twint_to_pd(columns):
+            return twint.output.panda.Tweets_df[columns]
+
+        tweet_df = twint_to_pd(["date", "tweet"])
+        tweets = tweet_df['tweet'].tolist()
+
         tweet_list = [] #List of tweets alongside polarity
         global_polarity = 0 #Polarity of all tweets === Sum of polarities of individual tweets
         tw_list=[] #List of tweets only => to be displayed on web page
         #Count Positive, Negative to plot pie chart
         pos=0 #Num of pos tweets
-        neg=1 #Num of negative tweets
+        neg=0 #Num of negative tweets
+        neutral = 0
         for tweet in tweets:
             count=20 #Num of tweets to be displayed on web page
             #Convert to Textblob format for assigning polarity
-            tw2 = tweet.full_text
-            tw = tweet.full_text
+            tw2 = tweet
+            tw = tweet
             #Clean
             tw=p.clean(tw)
             #print("-------------------------------CLEANED TWEET-----------------------------")
@@ -442,6 +466,9 @@ def insertintotable():
 
             #print("-------------------------------TWEET AFTER REMOVING NON ASCII CHARS-----------------------------")
             #print(tw)
+
+
+            '''
             blob = TextBlob(tw)
             polarity = 0 #Polarity of single individual tweet
             for sentence in blob.sentences:
@@ -466,9 +493,28 @@ def insertintotable():
         if neutral<0:
         	neg=neg+neutral
         	neutral=20
+        '''
+
+            analyzer = SentimentIntensityAnalyzer()
+            sentence = tw
+
+            vs = analyzer.polarity_scores(sentence)
+
+            if vs['compound'] > 0:
+                pos = pos + 1
+            elif vs['compound'] < 0:
+                neg = neg + 1
+            else:
+                neutral = neutral + 1
+
+            global_polarity += vs['compound']
+
+        global_polarity = global_polarity / len(tweets)
+
         print()
         print("##############################################################################")
         print("Positive Tweets :",pos,"Negative Tweets :",neg,"Neutral Tweets :",neutral)
+        print(global_polarity)
         print("##############################################################################")
         labels=['Positive','Negative','Neutral']
         sizes = [pos,neg,neutral]
@@ -494,7 +540,7 @@ def insertintotable():
             print("Tweets Polarity: Overall Negative")
             print("##############################################################################")
             tw_pol="Overall Negative"
-        return global_polarity,tw_list,tw_pol,pos,neg,neutral
+        return global_polarity,tweets,tw_pol,pos,neg,neutral
 
 
     def recommending(df, global_polarity,today_stock, lstm_pred):

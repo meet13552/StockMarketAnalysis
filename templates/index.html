@@ -32,9 +32,22 @@
 
 <!-- Animate.min -->
 <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='animate.min.css') }}">
+
+<style>
+  div#loading {
+    width: 100px;
+    height: 100px;
+    display: none;
+    background: url(/static/ajax-loader.gif) no-repeat center;
+    cursor: wait;
+    }
+</style>
 </head>
 
 <body>
+
+<div id="loading"></div>
+<div id="content">
 
 <!--preloader start-->
 
@@ -111,7 +124,7 @@
           
         </div>
         <div class="form-group">
-          <button class="btn btn-login">PREDICT THE FUTURE</button>
+          <button class="btn btn-login" onclick="loading();">PREDICT THE FUTURE</button>
         </div>
         
       </form>
@@ -340,6 +353,7 @@ Churchgate (E) Mumbai, Maharashtra, India </a></li>
   </div>
   <!-- /.modal-dialog --> 
 </div>
+</div>
 
 <!-- END Donate Popup--> 
 
@@ -357,5 +371,12 @@ Churchgate (E) Mumbai, Maharashtra, India </a></li>
 
 <!-- main js --> 
 <script type="text/javascript" src="{{url_for('static', filename='main.js')}}"></script>
+
+<script type="text/javascript">// <![CDATA[
+  function loading(){
+      $("#loading").show();
+      $("#content").hide();       
+  }
+// ]]></script>
 </body>
 </html>
