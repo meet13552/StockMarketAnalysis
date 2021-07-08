@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo-2.png') }}">
-    <title>JKS</title>
+    <title></title>
     
 	
 	<link href="{{ url_for('static', filename='owl.carousel.min.css') }}" rel="stylesheet" />
@@ -28,81 +28,18 @@
 <![endif]-->
 </head>
 
-<body class="header-fix fix-sidebar">
-    <!-- Main wrapper  -->
-    <div id="main-wrapper">
-        <!-- header header  -->
-        <div class="header">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-
-
-                <!-- Logo -->
-                <div class="navbar-header">
-                    <a href="http://localhost/www/wordpress-5.6.2/wordpress/" class="menuzord-brand"><img src="{{url_for('static', filename='logo-2.png')}}" />
-
-</a>
-                </div>
-                <!-- End Logo -->
-
-
-                <div class="navbar-collapse">
-                    <!-- toggle and nav items -->
-                    <ul class="navbar-nav mr-auto mt-md-0">
-                        <!-- This is  -->
-                        <li class="nav-item"> <a class="nav-link toggle-nav hidden-md-up text-muted  " href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item m-l-10"> <a class="nav-link sidebartoggle hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                        
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        <!-- End header header -->
-        <!-- Left Sidebar  -->
-        <div class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebar-menu">
-                        <li class="nav-devider"></li>
-                        <br>
-                        <li class="nav-label"><a href="http://localhost/www/wordpress-5.6.2/wordpress/">HOME</a></li>
-                        <li class="nav-label"><a href="http://127.0.0.1:5000">PREDICT THE FUTURE</a></li>
-                        
-                        <li class="nav-label"><a href="http://localhost/www/wordpress-5.6.2/wordpress/dashboard">DASHBOARD</a></li>
-                       
-                        <li class="nav-label"><a href="http://localhost/www/wordpress-5.6.2/wordpress/know-more/">ABOUT</a></li>
-                        
-                        
-                        <!-- <li class="nav-label"><a href="http://localhost/www/wordpress-5.6.2/wordpress/currency-converter/">CURRENCY CONVERTER</a></li> -->
-                       
-                        
-                        
-                        
-                        <li class="nav-label"><a href="http://localhost/www/wordpress-5.6.2/wordpress/home-2/#contact">CONTACT US</a></li>
-                        
-                        
-                        
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </div>
-        <!-- End Left Sidebar  -->
-        <!-- Page wrapper  -->
-        <div class="page-wrapper">
+<body>
+        <div class="login_page login_solid_bg">
             <!-- Bread crumb -->
             <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">TODAY'S {{quote}} STOCK DATA</h3> </div>
-                <div class="col-md-7 align-self-center">
-                    
+                <div class="col-lg-12 align-self-center">
+                    <h3 class="text-primary" style="text-align: center;"><b>TODAY'S {{quote}} STOCK DATA</b></h3> 
                 </div>
+                
             </div>
             <!-- End Bread crumb -->
             <!-- Container fluid  -->
-            <div class="container-fluid">
+            <div class="login_page login_solid_bg">
                 <!-- Start Page Content -->
                 <div class="row">
                     <div class="col-md-2">
@@ -111,7 +48,7 @@
                                 <div class="media-left meida media-middle">
                                     <span><i class="ti-bag f-s-40"></i></span>
                                 </div>
-                                <div class="media-body media-text-right">
+                                <div class="media-body media-text-center">
                                     <h2 class="color-white text-white">{{open_s}}</h2>
                                     <p class="m-b-0 text-white">OPEN</p>
                                 </div>
@@ -125,7 +62,7 @@
                                 <div class="media-left meida media-middle">
                                     <span><i class="ti-comment f-s-40"></i></span>
                                 </div>
-                                <div class="media-body media-text-right">
+                                <div class="media-body media-text-center">
                                     <h2 class="color-white text-white">{{high_s}}</h2>
                                     <p class="m-b-0 text-white">HIGH</p>
                                 </div>
@@ -138,7 +75,7 @@
                                 <div class="media-left meida media-middle">
                                     <span><i class="ti-vector f-s-40"></i></span>
                                 </div>
-                                <div class="media-body media-text-right">
+                                <div class="media-body media-text-center">
                                     <h2 class="color-white text-white">{{low_s}}</h2>
                                     <p class="m-b-0 text-white">LOW</p>
                                 </div>
@@ -151,7 +88,7 @@
                                 <div class="media-left meida media-middle">
                                     <span><i class="ti-location-pin f-s-40"></i></span>
                                 </div>
-                                <div class="media-body media-text-right">
+                                <div class="media-body media-text-center">
                                     <h2 class="color-white text-white">{{close_s}}</h2>
                                     <p class="m-b-0 text-white">CLOSE</p>
                                 </div>
@@ -164,7 +101,7 @@
                                 <div class="media-left meida media-middle">
                                     <span><i class="ti-comment f-s-40"></i></span>
                                 </div>
-                                <div class="media-body media-text-right">
+                                <div class="media-body media-text-center">
                                     <h2 class="color-white text-white">{{adj_close}}</h2>
                                     <p class="m-b-0 text-white">ADJ CLOSE</p>
                                 </div>
@@ -180,7 +117,7 @@
                                 <div class="media-left meida media-middle">
                                     <span><i class="ti-bag f-s-40"></i></span>
                                 </div>
-                                <div class="media-body media-text-right">
+                                <div class="media-body media-text-center">
                                     <h2 class="color-white text-white">{{vol}}</h2>
                                     <p class="m-b-0 text-white">VOLUME</p>
                                 </div>
@@ -191,11 +128,11 @@
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-title">
+                        <div class="card" style="text-align: center;">
+                            <div class="card-title" style="text-align: center;">
                                 <h4>RECENT TRENDS IN {{quote}} STOCK PRICES</h4>
                             </div>
-                            <div class="sales-chart">
+                            <div class="sales-chart" style="text-align: center;">
                                 <img src="{{url_for('static', filename='Trends.png')}}" />
                             </div>
                         </div>
@@ -214,16 +151,15 @@
                             </div>
                         </div>
                     </div>
-
                     -->
 
                     <!-- /# column -->
                     <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-title">
+                        <div class="card" style="text-align: center;">
+                            <div class="card-title" style="text-align: center;">
                                 <h4>LSTM MODEL ACCURACY</h4>
                             </div>
-                            <div class="team-chart">
+                            <div class="team-chart" style="text-align: center;">
                                 <img src="{{url_for('static', filename='LSTM.png')}}" />
                             </div>
                         </div>
@@ -264,15 +200,15 @@
 
                     
                     <!-- LSTM PRED -->
-                    <div class="col-md-4">
+                    <div class="col-md-6" style="padding: 2px;">
                         <div class="card bg-warning p-20">
                             <div class="media widget-ten">
                                 <div class="media-left meida media-middle">
                                     <span><i class="ti-comment f-s-40"></i></span>
                                 </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white text-white">{{lstm_pred}}</h2>
-                                    <p class="m-b-0 text-white">TOMORROW'S {{quote}} CLOSING PRICE BY LSTM</p>
+                                <div class="media-body media-text-center">
+                                    <h2 class="color-white text-white" style="text-align: center;">{{lstm_pred}}</h2>
+                                    <p class="m-b-0 text-white" style="text-align: center;">TOMORROW'S {{quote}} CLOSING PRICE BY LSTM</p>
                                 </div>
                             </div>
                         </div>
@@ -319,15 +255,15 @@
 
                     
                     <!-- LSTM ERR -->
-                    <div class="col-md-4">
+                    <div class="col-md-6" style="padding: 2px;">
                         <div class="card bg-primary p-20">
                             <div class="media widget-ten">
                                 <div class="media-left meida media-middle">
                                     <span><i class="ti-comment f-s-40"></i></span>
                                 </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white text-white">{{error_lstm}}</h2>
-                                    <p class="m-b-0 text-white">LSTM RMSE</p>
+                                <div class="media-body media-text-center">
+                                    <h2 class="color-white text-white" style="text-align: center;">{{error_lstm}}</h2>
+                                    <p class="m-b-0 text-white" style="text-align: center;">LSTM RMSE</p>
                                 </div>
                             </div>
                         </div>
@@ -356,7 +292,7 @@
                     <!-- /# column -->
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-title">
+                            <div class="card-title" style="text-align: center;">
                                 <h4>RECENT TWEETS AND NEWS ABOUT {{quote}} </h4>
                             </div>
                             <div class="card-body">
@@ -393,17 +329,20 @@
                             </div>
                         </div>
                     </div>
-                            <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-title">
-                                <h4>SENTIMENT ANALYSIS FOR {{quote}} TWEETS</h4>
+
+              
+
+                            <div class="col-lg-12" style="padding: 10px;">
+                        <div class="card" style="text-align: center;">
+                            <div class="card-title" style="text-align: center;">
+                                <h4 style="text-align: center;">SENTIMENT ANALYSIS FOR {{quote}} TWEETS</h4>
                             </div>
-                            <div class="sales-chart">
+                            <div class="sales-chart" style="text-align: center;">
                                 <img src="{{url_for('static', filename='SA.png')}}" />
                             </div>
                         </div>
                     </div>
-
+                
 
 
                     <!--
@@ -450,35 +389,64 @@
              
 
                     <!-- OVERALL POLARITY -->
-                    <div class="col-lg-6">
-                        <div class="card bg-success p-20">
+
+
+                    <div class="col-md-6" style="padding: 2px;">
+                        <div class="card bg-warning p-20">
                             <div class="media widget-ten">
                                 <div class="media-left meida media-middle">
-                                    <span><i class="ti-location-pin f-s-40"></i></span>
+                                    <span><i class="ti-comment f-s-40"></i></span>
                                 </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white text-white">{{tw_pol}}</h2>
-                                    <p class="m-b-0 text-white">OVERALL TWEETS POLARITY</p>
+                                <div class="media-body media-text-center">
+                                    <h2 class="color-white text-white" style="text-align: center;">{{tw_pol}}</h2>
+                                    <p class="m-b-0 text-white" style="text-align: center;">OVERALL TWEETS POLARITY</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-md-6" style="padding: 2px;">
                         <div class="card bg-primary p-20">
                             <div class="media widget-ten">
                                 <div class="media-left meida media-middle">
                                     <span><i class="ti-comment f-s-40"></i></span>
                                 </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white text-white" style="text-align: left;">According to the ML Predictions & Sentiment Analysis of the Tweets, a {{idea}} in {{quote}} stock is expected => {{decision}}</h2>
-                                    <p class="m-b-0 text-white">RECOMMENDATION</p>
+                                <div class="media-body media-text-center">
+                                    <h4 class="m-b-0 text-white" style="text-align: center;">According to the ML Predictions & Sentiment Analysis of the Tweets, a {{idea}} in {{quote}} stock is expected. <br>Hence, the recommended decision would be: <b> {{decision}}</b></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<!--
+
+               <div class="col-md-6">
+                        <div class="card bg-success p-20">
+                            <div class="media widget-ten">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-location-pin f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-center">
+                                    <h2 class="color-white text-white" style="text-align: center;">{{tw_pol}}</h2>
+                                    <p class="m-b-0 text-white" style="text-align: justify;"> OVERALL TWEETS POLARITY</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-6" >
+                        <div class="card bg-success p-20">
+                            <div class="media widget-ten">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-comment f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-center">
+                                    <h3 class="color-white text-white" style="text-align: justify">According to the ML Predictions & Sentiment Analysis of the Tweets, a {{idea}} in {{quote}} stock is expected. Hence, the recommended decision would be: <b> {{decision}}</b></h3>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-
+-->
 
 
 
@@ -500,8 +468,44 @@
                 <!-- End PAge Content -->
             </div>
             <!-- End Container fluid  -->
-            <!-- footer -->
-            <div class="footer-section-area padding-top-bottom">
+     <!-- footer 
+     <div class="footer-section-area padding-top-bottom">
+        <div class="container" style="background-color: #1f2b31;">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><img  src="{{url_for('static', filename='logo-2.png')}}"</a>
+              <p style="color:white;">JKS was started with a common goal of serving the finance community while they make transitions. All our team members bring to table their unique expertise and experience of stock market which they would like to pass on to future investors.</p>
+              
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+              <div>
+                <h3 style="color:white;padding-top: 20px;padding-left: 0px;">Contact Us</h3>
+              </div>
+              <div style="padding-top: 25px;">
+               <ul style="color:white;">
+                <li>
+      JKS, Office 206, Hubtown Solaris, Prof. NS Phadke Road,
+      Churchgate (E) Mumbai, Maharashtra, India</li>
+                <li><i class="fa fa-envelope-o fa-2x"></i>info.bom@jks.com</li>
+                <li><i class="fa fa-phone fa-2x"></i>+91 98 19384052</li>
+              </ul>
+      
+      
+               
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+              <div>
+                <h3 style="color:white;padding-top: 25px;padding-left: 0px;">Quick Links</h3>
+              </div>
+              <div class="information">
+                <ul>
+                  <li><a style="color:white;padding-top: 10px;" href="http://localhost/www/wordpress-5.6.2/wordpress/"> <i class="fa fa-arrow-right"></i> HOME</a></li>
+                  <li><a style="color:white;" href="http://localhost/www/wordpress-5.6.2/wordpress/dashboard"> <i class="fa fa-arrow-right"></i> DASHBOARD</a></li>
+                  <li><a style="color:white;" href="http://localhost/www/wordpress-5.6.2/wordpress/know-more/"> <i class="fa fa-arrow-right"></i> ABOUT</a></li>
+                  <!-- <li><a style="color:white;" href="http://localhost/www/wordpress-5.6.2/wordpress/currency-converter/"> <i class="fa fa-arrow-right"></i> CURRENCY CONVERTER</a></li> -->
+        <!--  <li><a style="color:white;" href="http://localhost/www/wordpress-5.6.2/wordpress/home-2/#contact"> <i class="fa fa-arrow-right"></i> CONTACT US</a></li>  <!-- footer -->
+<!-- 
+        <div class="footer-section-area padding-top-bottom">
   <div class="container" style="background-color: #1f2b31;">
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><img  src="{{url_for('static', filename='logo-2.png')}}"</a>
@@ -535,7 +539,7 @@ Churchgate (E) Mumbai, Maharashtra, India</li>
             <li><a style="color:white;" href="http://localhost/www/wordpress-5.6.2/wordpress/dashboard"> <i class="fa fa-arrow-right"></i> DASHBOARD</a></li>
             <li><a style="color:white;" href="http://localhost/www/wordpress-5.6.2/wordpress/know-more/"> <i class="fa fa-arrow-right"></i> ABOUT</a></li>
             <!-- <li><a style="color:white;" href="http://localhost/www/wordpress-5.6.2/wordpress/currency-converter/"> <i class="fa fa-arrow-right"></i> CURRENCY CONVERTER</a></li> -->
-            <li><a style="color:white;" href="http://localhost/www/wordpress-5.6.2/wordpress/home-2/#contact"> <i class="fa fa-arrow-right"></i> CONTACT US</a></li>
+<!--            <li><a style="color:white;" href="http://localhost/www/wordpress-5.6.2/wordpress/home-2/#contact"> <i class="fa fa-arrow-right"></i> CONTACT US</a></li> 
 
           </ul>
         </div>
@@ -589,3 +593,5 @@ Churchgate (E) Mumbai, Maharashtra, India</li>
 </body>
 
 </html>
+      
+              

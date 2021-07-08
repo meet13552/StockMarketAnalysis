@@ -404,7 +404,7 @@ def insertintotable():
 
 
 
-    #**************** SENTIMENT ANALYSIS **************************
+    #******************* SENTIMENT ANALYSIS **************************
     def retrieving_tweets_polarity(symbol):
         stock_ticker_map = pd.read_csv('Yahoo-Finance-Ticker-Symbols.csv')
         stock_full_form = stock_ticker_map[stock_ticker_map['Ticker']==symbol]
@@ -532,7 +532,7 @@ def insertintotable():
         return render_template('index.html',not_found=True)
     else:
     
-        #************** PREPROCESSUNG ***********************
+        #*************** PREPROCESSUNG ***********************
         df = pd.read_csv(''+quote+'.csv')
         print("##############################################################################")
         print("Today's",quote,"Stock Data: ")
