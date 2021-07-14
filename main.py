@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Sep 27 14:36:49 2019
 
-@author: Kaushik
-"""
 #**************** IMPORT PACKAGES ********************
 from flask import Flask, render_template, request, flash, redirect, url_for
 from alpha_vantage.timeseries import TimeSeries
@@ -425,8 +421,11 @@ def insertintotable():
         now = datetime.now()
         date_time = now.strftime("%Y-%m-%d")
 
+        search = symbol + " nifty"
+        print(search)
+
         c = twint.Config()
-        c.Search = "TATAMOTORS nifty"
+        c.Search = search
         c.Limit= 10
         c.Lang = "en"
         c.Since= date_time
