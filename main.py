@@ -149,11 +149,16 @@ def insertintotable():
 
     #************* LSTM SECTION **********************
 
-    def LSTM_ALGO(df):
+    def LSTM_ALGO(df, quote, tt):
 
-        model = tf.keras.models.load_model('TATAMOTORS')
+        stock_name = quote.replace(".NS","")
 
-        df = yf.download(tickers='TATAMOTORS.NS', period='max', interval='1d')
+        model = tf.keras.models.load_model(stock_name)
+
+        if tt == "D":
+            df = yf.download(tickers=quote, period='max', interval='1d')
+        elif tt == "W":
+            df = yf.download(tickers=quote, period='max', interval='1wk')
         data = df.filter(['Close'])
         dataset = data.values
         training_data_len = math.ceil(len(dataset)*0.8) 
@@ -562,7 +567,17 @@ def insertintotable():
             print()
             print("##############################################################################")
             print("According to the ML Predictions and Sentiment Analysis of Tweets, a",idea,"in",quote,"stock is expected => ",decision)
-        return idea, decision
+
+        if decision=="BUY":
+            meter = "arrow-F-uE7IX8- arrowToBuy-1R7d8UMJ- arrowBuyShudder-3GMCnG5u-"
+            meter1 = "speedometerSignal-pyzN--tL- brandColor-1WP1oBmS-"
+            meter2 = "Buy"
+        else:
+            meter = "arrow-F-uE7IX8- arrowToSell-2niuhIkD- arrowSellShudder-mudaBhtR-"
+            meter1 = "speedometerSignal-pyzN--tL- redColor-Hpg7doOR-"
+            meter2 = "Sell"
+
+        return idea, decision, meter, meter1, meter2
 
 
 
@@ -594,11 +609,12 @@ def insertintotable():
 
 
         #arima_pred, error_arima=ARIMA_ALGO(df)
-        lstm_pred, error_lstm=LSTM_ALGO(df)
+        lstm_pred, error_lstm=LSTM_ALGO(df, quote, "D")
+        lstm_pred_w, error_lstm_w = LSTM_ALGO(df, quote, "W")
         #df, lr_pred, forecast_set,mean,error_lr=LIN_REG_ALGO(df)
         polarity,tw_list,tw_pol,pos,neg,neutral = retrieving_tweets_polarity(quote)
         
-        idea, decision=recommending(df, polarity,today_stock, lstm_pred)
+        idea, decision, meter, meter1, meter2=recommending(df, polarity,today_stock, lstm_pred)
         print()
         '''
         print("Forecasted Prices for Next 7 days:")
@@ -608,7 +624,8 @@ def insertintotable():
         return render_template('results.html',quote=quote,lstm_pred=round(lstm_pred,2),open_s=today_stock['Open'].to_string(index=False),
                                close_s=today_stock['Close'].to_string(index=False),adj_close=today_stock['Adj Close'].to_string(index=False),
                                tw_list=tw_list,tw_pol=tw_pol,idea=idea,decision=decision,high_s=today_stock['High'].to_string(index=False),
-                               low_s=today_stock['Low'].to_string(index=False),vol=today_stock['Volume'].to_string(index=False),error_lstm=round(error_lstm,2))
+                               low_s=today_stock['Low'].to_string(index=False),vol=today_stock['Volume'].to_string(index=False),error_lstm=round(error_lstm,2), 
+                               lstm_pred_w=round(lstm_pred_w,2), error_lstm_w=round(error_lstm_w,2), meter=meter, meter1=meter1, meter2=meter2)
 if __name__ == '__main__':
    app.run()
    
